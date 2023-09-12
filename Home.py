@@ -270,6 +270,23 @@ price_types_options = st.sidebar.multiselect(
 selected_price_types = df['price_type'].isin(price_types_options)
 df = df.loc[selected_price_types, :]
 
+# ====================================================================
+# GITHUB LINK
+# ====================================================================
+
+def img_to_base64(path):
+    with open(path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode()
+    
+# Combine o ícone do GitHub e o link em HTML
+github_link = """
+<a href="https://github.com/fernandoper/fome_zero.git" style="display: inline-block; text-decoration: none; color: yellow;">
+    <img src="data:image/png;base64,{}" width="20" style="display: inline-block; vertical-align: middle; margin-right: 10px;">
+    Github of this project
+</a>
+""".format(img_to_base64('images/github_logo.png'))
+
+st.sidebar.markdown(github_link, unsafe_allow_html=True)
 
 # ====================================================================
 # PAGE CONTENT
